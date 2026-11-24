@@ -1,37 +1,30 @@
-#include "book.h"
-#include "flat.h"
+#include "./bookflat.h"
+#include "./flat.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
+void BookFlat(struct flat *flats, int num)
+{
+    int flatnumber;
 
-void BookFlat(struct flat*flats,int num) {
+    printf("Enter flatnumber that you would like to book:");
+    scanf("%d", &flatnumber);
 
-  int flatnumber;
-  int found=0;
-
-  printf("Enter flatnumber that you would like to book:");
-  scanf("%d",&flatnumber);
-
-  for (int i=0;i<flatnumber;i++)
-  {
-    if(flats[i].booked==flatnumber)
+    if (flatnumber < 1 || flatnumber > num)
     {
-        found=1
+        printf("Flat not found\n");
+        return;
+    }
 
-    if(flats[i].booked==false)
+    int index = flatnumber - 1;
+
+    if (flats[index].booked)
     {
-        flats[i].booked=true;
-        printf("Flat No %d booked successfully!\n")
-    }    
+        printf("Flat already booked!\n");
+    }
     else
     {
-        printf("Flat already booked!\n")
+        flats[index].booked = true;
+        printf("Flat No %d booked successfully!\n", flatnumber);
     }
-    break;
-  }
-}
-if(found==0)
-{
-    printf("flat not found\n")
-}
 }
