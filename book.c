@@ -1,12 +1,17 @@
+#include "bookflat.h"
+#include "flat.h"
 #include <stdio.h>
 #include <stdbool.h>
 
-void BookFlat(struct flat *flats, int num)
+void BookFlat(struct Flat *flats, int num)
 {
     int flatnumber;
 
-    printf("Enter flatnumber that you would like to book:");
-    scanf("%d", &flatnumber);
+    printf("Enter flatnumber that you would like to book: ");
+    if (scanf("%d", &flatnumber) != 1) {
+        printf("Invalid input!\n");
+        return;
+    }
 
     if (flatnumber < 1 || flatnumber > num)
     {

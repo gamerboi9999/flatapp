@@ -1,7 +1,8 @@
-#ifndef BOOK_H
-#define BOOK_H
+#ifndef BOOKFLAT_H
+#define BOOKFLAT_H
+
 #include "flat.h"
 
-void BookFlat(struct flat*flats,int num);
+void BookFlat(struct Flat *flats, int num);
 
 #endif
