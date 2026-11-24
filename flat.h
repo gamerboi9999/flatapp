@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-struct flat {
+struct Flat {
     int number;
     int rooms;
     char name[50];
@@ -13,5 +13,9 @@ struct flat {
     float Rent;
 };
 
+<<<<<<< HEAD
 
 #endif
+=======
+#endif
+>>>>>>> bcad6bf34a524b246ac40a8425546d3beb5ef7df
