@@ -13,8 +13,5 @@ struct flat {
     float Rent;
 };
 
-void Menu(void);
-void DisplayFlats(int room);
-void DisplayAll(struct flat *flats, int num);
 
 #endif

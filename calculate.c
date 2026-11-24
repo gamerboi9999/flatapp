@@ -1,12 +1,13 @@
-#include "rent_h"
-#include "flat_h"
+#include "calculaterent.h"
+#include "flat.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-float calculateRent(struct Flat*flat,int month){
+float calculateRent(struct flat *flat,int month)
+{
     float totalRent;
 
-    totalRent=flat.rent*month;
+    totalRent = flat->Rent * month;
 
     return totalRent;
 }
