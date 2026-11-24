@@ -1,7 +1,8 @@
-#ifdef RENT_H
+#ifndef RENT_H
 #define RENT_H
+
 #include "flat.h"
 
-float calculateRent(struct Flat*flat,int month);
+float calculateRent(struct flat *flat, int month);
 
 #endif

@@ -13,9 +13,5 @@ struct Flat {
     float Rent;
 };
 
-<<<<<<< HEAD
 
 #endif
-=======
-#endif
->>>>>>> bcad6bf34a524b246ac40a8425546d3beb5ef7df
