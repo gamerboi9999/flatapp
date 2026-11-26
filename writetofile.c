@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include "writeandread.h"
 
 void WriteToFile(const struct Flat *flats, int num)
@@ -12,8 +12,10 @@ void WriteToFile(const struct Flat *flats, int num)
         return;
     }
 
+    fprintf(file, "| Flat No | Rooms | Tenant Name | Owner | Booked | Street | Rent |\n");
+
     for (int i = 0; i < num; i++) {
-        fprintf(file, "|%d|\n |%d|\n |%s|\n |%s|\n |%d|\n |%s|\n |%.2f|\n",
+        fprintf(file, "| %d | %d | %s | %s | %d | %s | %.2f |\n",
         flats[i].number,
         flats[i].rooms,
         flats[i].name,
@@ -37,10 +39,17 @@ int ReadFromFile(struct Flat *flats, int num)
         return 0;
     }
 
+    char header[256];
+    if (fgets(header, sizeof(header), file) == NULL) {
+        printf("Empty file!\n");
+        fclose(file);
+        return 0;
+    }
+
     int count = 0;
     int bookedValue;
 
-    while (count < num && fscanf(file, "%d|%d|%49[^|]|%49[^|]|%d|%49[^|]|%f",
+    while (count < num && fscanf(file, "| %d | %d | %49[^|] | %49[^|] | %d | %49[^|] | %f |",
     &flats[count].number,
     &flats[count].rooms,
     flats[count].name,
@@ -50,6 +59,29 @@ int ReadFromFile(struct Flat *flats, int num)
     &flats[count].Rent) == 7)
     {
         flats[count].booked = bookedValue != 0;
+        
+        flats[count].name[strcspn(flats[count].name, "\r\n")] = 0;
+        flats[count].owner[strcspn(flats[count].owner, "\r\n")] = 0;
+        flats[count].street[strcspn(flats[count].street, "\r\n")] = 0;
+
+        int len = strlen(flats[count].name);
+        while (len > 0 && flats[count].name[len - 1] == ' ') {
+            flats[count].name[len - 1] = '\0';
+            len--;
+        }
+
+        len = strlen(flats[count].owner);
+        while (len > 0 && flats[count].owner[len - 1] == ' ') {
+            flats[count].owner[len - 1] = '\0';
+            len--;
+        }
+
+        len = strlen(flats[count].street);
+        while (len > 0 && flats[count].street[len - 1] == ' ') {
+            flats[count].street[len - 1] = '\0';
+            len--;
+        }
+
         count++;
     }
 
