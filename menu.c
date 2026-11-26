@@ -4,7 +4,7 @@
 
 
 struct Flat* DisplayFlats(int num) {
-    struct Flat* flats = malloc(num * sizeof(struct Flat));
+    struct Flat *flats = calloc((size_t)num, sizeof *flats);
 
     if (flats == NULL) {
         printf("Memory allocation failed!\n");

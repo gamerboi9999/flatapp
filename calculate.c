@@ -4,7 +4,7 @@
 float calculateRent(struct Flat *flat, int month) {
     float totalRent;
 
-    totalRent = flat->Rent * month;
+    totalRent = flat->Rent * (float)month;
 
     return totalRent;
 }
