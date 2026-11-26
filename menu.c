@@ -188,7 +188,6 @@ static void DisplayAllNodes(const struct FlatNode *head) {
     }
 }
 
-/* Оставлены для совместимости с menu.h */
 struct Flat* DisplayFlats(int num) {
     struct FlatNode *list = BuildFlatsList(num);
     if (list == NULL) {
@@ -339,7 +338,6 @@ int main(void) {
                     break;
                 }
 
-                /* Каждый узел создаём отдельно через calloc */
                 struct FlatNode *tempHead = NULL;
                 struct FlatNode *tempTail = NULL;
                 struct Flat *buf = malloc((size_t)maxNum * sizeof(*buf));
