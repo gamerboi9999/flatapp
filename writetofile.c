@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "flat.h"
+#include "writeandread.h"
 
-void WriteToFile(struct Flat *flats)
+void WriteToFile(const struct Flat *flats, int num)
 {
     FILE *file = fopen("flats.txt", "w");
 
@@ -12,48 +12,48 @@ void WriteToFile(struct Flat *flats)
         return;
     }
 
-    fprintf(file, "%d|%d|%s|%s|%d|%s|%.2f\n",
-    flats[0].number,
-    flats[0].rooms,
-    flats[0].name,
-    flats[0].owner,
-    flats[0].booked ? 1 : 0,
-    flats[0].street,
-    flats[0].Rent);
+    for (int i = 0; i < num; i++) {
+        fprintf(file, "%d|%d|%s|%s|%d|%s|%.2f\n",
+        flats[i].number,
+        flats[i].rooms,
+        flats[i].name,
+        flats[i].owner,
+        flats[i].booked ? 1 : 0,
+        flats[i].street,
+        flats[i].Rent);
+    }
 
     fclose(file);
-
-    printf("Flat saved successfully!\n");
+    printf("Flats saved successfully!\n");
 }
 
-void ReadFromFile(struct Flat *flats)
+int ReadFromFile(struct Flat *flats, int num)
 {
     FILE *file = fopen("flats.txt", "r");
 
     if (file == NULL)
     {
         printf("File not found!\n");
-        return;
+        return 0;
     }
 
+    int count = 0;
     int bookedValue;
 
-    if (fscanf(file, "%d|%d|%49[^|]|%49[^|]|%d|%49[^|]|%f",
-    &flats[0].number,
-    &flats[0].rooms,
-    flats[0].name,
-    flats[0].owner,
+    while (count < num && fscanf(file, "%d|%d|%49[^|]|%49[^|]|%d|%49[^|]|%f",
+    &flats[count].number,
+    &flats[count].rooms,
+    flats[count].name,
+    flats[count].owner,
     &bookedValue,
-    flats[0].street,
-    &flats[0].Rent) == 7)
+    flats[count].street,
+    &flats[count].Rent) == 7)
     {
-        flats[0].booked = bookedValue != 0;
-        printf("Flat loaded successfully!\n");
-    }
-    else
-    {
-        printf("Error reading flat data!\n");
+        flats[count].booked = bookedValue != 0;
+        count++;
     }
 
     fclose(file);
+    printf("Loaded %d flat(s) successfully!\n", count);
+    return count;
 }

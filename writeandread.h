@@ -1,10 +1,9 @@
 #ifndef WRITEANDREAD_H
 #define WRITEANDREAD_H
 
-struct Flat;
+#include "flat.h"
 
-void WriteToFile(struct Flat *flats);
-void ReadFromFile(struct Flat *flats);
+void WriteToFile(const struct Flat *flats, int num);
+int ReadFromFile(struct Flat *flats, int num);
+
 #endif
-
-

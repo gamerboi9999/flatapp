@@ -1,9 +1,7 @@
-#ifndef HEADER_1_H
-#define HEADER_1_H
+#ifndef MENU_H
+#define MENU_H
 
-struct Flat {
-    int rooms;
-};
+#include "flat.h"
 
 struct Flat* DisplayFlats(int num);
 void DisplayAll(struct Flat* flats, int num);
