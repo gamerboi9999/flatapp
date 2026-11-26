@@ -3,6 +3,6 @@
 
 #include "flat.h"
 
-float calculateRent(struct flat *flat, int month);
+float calculateRent(struct Flat *flat, int month);
 
 #endif
