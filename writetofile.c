@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "flat.h"
-#include "menu.h"
 
 void WriteToFile(struct Flat *flats)
 {

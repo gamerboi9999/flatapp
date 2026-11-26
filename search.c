@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string.h>
 
-void SearchFlat(char name[],struct flat*flats,int num)
+void SearchFlat(char name[],struct Flat*flats,int num)
 {
     int found=0;
      for (int i=0;i<num;i++) {
@@ -23,6 +23,6 @@ void SearchFlat(char name[],struct flat*flats,int num)
         }
     }
     if (found==0) {
-        print("Flat not found!\n");
+        printf("Flat not found!\n");
     }
 }

@@ -3,7 +3,6 @@
 #include "menu.h"
 
 
-// Ввод квартир и отображение количества комнат
 struct Flat* DisplayFlats(int num) {
     struct Flat* flats = malloc(num * sizeof(struct Flat));
 
@@ -32,7 +31,6 @@ struct Flat* DisplayFlats(int num) {
 }
 
 
-// Отображение полного списка квартир
 void DisplayAll(struct Flat* flats, int num) {
     printf("\n********** ALL FLATS **********\n");
 
@@ -43,7 +41,6 @@ void DisplayAll(struct Flat* flats, int num) {
 }
 
 
-// Главная функция
 int main(void) {
     int num = 0;
     int condition = 0;
