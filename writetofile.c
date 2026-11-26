@@ -13,7 +13,7 @@ void WriteToFile(const struct Flat *flats, int num)
     }
 
     for (int i = 0; i < num; i++) {
-        fprintf(file, "%d|%d|%s|%s|%d|%s|%.2f\n",
+        fprintf(file, "%d\n|%d\n|%s\n|%s\n|%d\n|%s\n|%.2f\n",
         flats[i].number,
         flats[i].rooms,
         flats[i].name,
